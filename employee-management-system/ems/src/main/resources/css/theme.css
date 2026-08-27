@@ -1,0 +1,139 @@
+/* Employee Management System - GUI theme
+   Palette: slate sidebar, soft neutral content area, single blue accent. */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-background-color: #f4f6f9;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    -fx-background-color: #1e2a3a;
+    -fx-padding: 0 0 20 0;
+}
+.sidebar-brand {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 24 20 24 20;
+}
+.sidebar-brand-sub {
+    -fx-text-fill: #8fa1b8;
+    -fx-font-size: 11px;
+    -fx-padding: 0 20 20 20;
+}
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c3ccd9;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-max-width: infinity;
+}
+.nav-button:hover {
+    -fx-background-color: #26374d;
+    -fx-text-fill: white;
+}
+.nav-button-selected {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ---- Top bar ---- */
+.top-bar {
+    -fx-background-color: white;
+    -fx-padding: 16 24 16 24;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 0 0 1 0;
+}
+.top-bar-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e2a3a;
+}
+.user-badge {
+    -fx-text-fill: #52606d;
+    -fx-font-size: 12px;
+}
+
+/* ---- Content ---- */
+.content-area {
+    -fx-background-color: #f4f6f9;
+    -fx-padding: 24;
+}
+
+/* ---- Cards ---- */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(30,42,58,0.10), 8, 0, 0, 2);
+}
+.stat-card-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e2a3a;
+}
+.stat-card-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #8a96a3;
+}
+.section-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(30,42,58,0.08), 6, 0, 0, 2);
+}
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e2a3a;
+}
+
+/* ---- Buttons ---- */
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.btn-primary:hover { -fx-background-color: #1d4ed8; }
+.btn-secondary {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #1e2a3a;
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #cbd5e1; }
+.btn-danger {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+.btn-danger:hover { -fx-background-color: #b91c1c; }
+
+/* ---- Table ---- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+}
+.table-view .column-header-background {
+    -fx-background-color: #f4f6f9;
+}
+.table-view .column-header-background .label {
+    -fx-text-fill: #52606d;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+}
+
+/* ---- Misc ---- */
+.error-text { -fx-text-fill: #dc2626; -fx-font-size: 12px; }
+.field-label { -fx-text-fill: #52606d; -fx-font-size: 12px; -fx-font-weight: bold; }

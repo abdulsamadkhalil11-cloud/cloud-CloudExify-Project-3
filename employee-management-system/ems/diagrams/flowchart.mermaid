@@ -1,0 +1,36 @@
+flowchart TD
+    Start([Start]) --> DataCheck{Saved data file exists?}
+    DataCheck -->|Yes| Load[Load employees.dat]
+    DataCheck -->|No| Seed[Seed sample data]
+    Load --> TopMenu
+    Seed --> TopMenu
+
+    TopMenu{Admin Login / Employee Login / Exit}
+    TopMenu -->|Exit| End([End])
+    TopMenu -->|Admin Login| ALogin[Prompt username + password]
+    TopMenu -->|Employee Login| ELogin[Prompt employee ID + password]
+
+    ALogin --> ACheck{Credentials valid?}
+    ACheck -->|Yes| AdminMenu[Admin Menu: 15 options]
+    ACheck -->|No| AAttempt{Attempts < 3?}
+    AAttempt -->|Yes| ALogin
+    AAttempt -->|No| TopMenu
+
+    ELogin --> ECheck{Credentials valid?}
+    ECheck -->|Yes| EmpMenu[Employee Menu: self-service options]
+    ECheck -->|No| EAttempt{Attempts < 3?}
+    EAttempt -->|Yes| ELogin
+    EAttempt -->|No| Forgot{Try forgot-password?}
+    Forgot -->|Yes, CNIC matches| ResetPwd[Issue temporary password] --> TopMenu
+    Forgot -->|No| TopMenu
+
+    AdminMenu --> AAction[Add/Remove/Update/Search/View Employee\nAttendance, Salary, Leave, Reports, Dashboard\nSave, Load, Backup, Restore]
+    AAction -->|Exception thrown| AError[Catch EMSException, show friendly message] --> AdminMenu
+    AAction -->|Choice 15: Exit| AExit{Save before exit?}
+    AExit -->|Yes| SaveA[Save to employees.dat] --> TopMenu
+    AExit -->|No| TopMenu
+    AAction -->|Choice 0: Logout| TopMenu
+
+    EmpMenu --> EAction[View profile, Check in/out, Apply leave,\nView salary slip, Change password]
+    EAction -->|Exception thrown| EError[Catch EMSException, show friendly message] --> EmpMenu
+    EAction -->|Logout| TopMenu

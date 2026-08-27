@@ -1,0 +1,136 @@
+classDiagram
+    class Employee {
+        <<abstract>>
+        -String employeeId
+        -String fullName
+        -int age
+        -Gender gender
+        -String cnic
+        -String phoneNumber
+        -String email
+        -String address
+        -Department department
+        -String designation
+        -double salary
+        -LocalDate joiningDate
+        -LocalDate dateOfBirth
+        -double attendancePercentage
+        -double performanceScore
+        -EmploymentStatus employmentStatus
+        -String username
+        -String passwordHash
+        -List~Attendance~ attendanceRecords
+        -static int totalEmployeeCount
+        +Employee(...)
+        +Employee(... no dateOfBirth)
+        +displayInformation() void
+        +calculateSalary() double
+        +login(String, String) boolean
+        +logout() void
+        +updateProfile(String, String, String, String) void
+        +updateProfile(String) void
+        +markAttendance(LocalTime) Attendance
+        +viewAttendance() List~Attendance~
+        +generateEmployeeReport() String
+        +getRoleSummary()* String
+        +getExperienceYears() int
+        +getYearsToRetirement() int
+        +isBirthdayToday() boolean
+    }
+
+    class Manager {
+        -int teamSize
+        -double departmentBudget
+        -List~String~ projectsManaged
+        +displayInformation() void
+        +approveLeave(LeaveRequest) void
+        +rejectLeave(LeaveRequest) void
+        +assignTask(Employee, String) void
+        +evaluatePerformance(Employee, double) void
+        +promoteEmployee(Employee, String) void
+        +conductMeeting(String, List~Employee~) void
+    }
+
+    class Developer {
+        -String programmingLanguage
+        -String framework
+        -String githubUsername
+        -List~String~ completedProjects
+        +calculateSalary() double
+        +writeCode(String) void
+        +submitProject(String) void
+        +fixBug(String) void
+        +commitCode(String) void
+        +updateProjectStatus(String, String) void
+    }
+
+    class HR {
+        -int recruitedEmployees
+        -int interviewsConducted
+        +displayInformation() void
+        +hireEmployee(Employee) void
+        +terminateEmployee(Employee) void
+        +scheduleInterview(String, LocalDate) void
+        +updatePayroll(Employee, double) void
+        +manageLeaveRequests(LeaveRequest, boolean) void
+    }
+
+    class Admin {
+        -String username
+        -String passwordHash
+        +login(String, String) boolean
+        +logout() void
+        +resetPassword(Employee) String
+    }
+
+    class Loginable {
+        <<interface>>
+        +login(String, String) boolean
+        +logout() void
+    }
+    class Payable {
+        <<interface>>
+        +calculateSalary() double
+    }
+    class Reportable {
+        <<interface>>
+        +generateReport() String
+    }
+
+    class Attendance {
+        -LocalDate date
+        -LocalTime checkInTime
+        -LocalTime checkOutTime
+        +isLate() boolean
+        +getWorkingHours() double
+    }
+    class LeaveRequest {
+        -String requestId
+        -LeaveType type
+        -LeaveStatus status
+        +approve(String) void
+        +reject(String) void
+        +getDayCount() long
+    }
+    class SalarySlip {
+        -double basicSalary
+        -double bonus
+        -double tax
+        +getNetSalary() double
+    }
+    class PerformanceReview {
+        -double rating
+        -String feedback
+    }
+
+    Employee <|-- Manager
+    Employee <|-- Developer
+    Employee <|-- HR
+    Employee ..|> Loginable
+    Employee ..|> Payable
+    Employee ..|> Reportable
+    Admin ..|> Loginable
+    Employee "1" o-- "many" Attendance : tracks
+    Employee "1" ..> "many" LeaveRequest : applies for
+    Employee "1" ..> "many" SalarySlip : receives
+    Employee "1" ..> "many" PerformanceReview : reviewed by

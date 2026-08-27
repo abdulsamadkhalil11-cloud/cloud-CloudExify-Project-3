@@ -1,0 +1,22 @@
+flowchart TB
+    E["Employee (abstract)\nfullName, salary, department, ...\ndisplayInformation(), calculateSalary()"]
+    M["Manager\n+ teamSize, departmentBudget\noverrides displayInformation()"]
+    D["Developer\n+ programmingLanguage, framework\noverrides calculateSalary()"]
+    H["HR\n+ recruitedEmployees, interviewsConducted\noverrides displayInformation()"]
+    A["Admin (standalone)\nusername, password\nnot part of the Employee tree"]
+
+    E -->|extends| M
+    E -->|extends| D
+    E -->|extends| H
+
+    L("Loginable «interface»")
+    P("Payable «interface»")
+    R("Reportable «interface»")
+
+    E -.->|implements| L
+    E -.->|implements| P
+    E -.->|implements| R
+    A -.->|implements| L
+
+    style E fill:#e8eef7,stroke:#33475b,stroke-width:2px
+    style A fill:#f7f0e8,stroke:#8a6d3b,stroke-width:2px
